@@ -1,7 +1,10 @@
 package fr.wcs.starlove;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +41,9 @@ public class ListeActivity extends AppCompatActivity {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         mUserID = mUser.getUid();
         myRef = mDatabase.getReference("Profils");
-        mUserKey = getIntent().getStringExtra("key");
+       // mUserKey = getIntent().getStringExtra("key");
+        mUserKey = "-LCjK-8J_wu8OjdIB1QT";
+
 
 
         mListView = findViewById(R.id.listviewprincipal);
@@ -69,6 +74,15 @@ public class ListeActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        Button toSearch = findViewById(R.id.bt_preferences);
+        toSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListeActivity.this, Search.class);
+                startActivity(intent);
             }
         });
 

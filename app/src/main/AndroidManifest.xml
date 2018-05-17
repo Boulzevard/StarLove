@@ -19,6 +19,7 @@
         <activity android:name=".ListeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -37,16 +38,10 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-
-
-
-        <activity android:name=".PlanetActivity"></activity>
+        <activity android:name=".PlanetActivity" />
         <activity android:name=".Search" />
-        <activity android:name=".MainActivity">
-
-
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".FilterListActivity"></activity>
     </application>
 
 </manifest>
