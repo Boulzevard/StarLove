@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Profils");
+        final DatabaseReference homeRef = database.getReference("homeworld");
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String url = "https://cdn.rawgit.com/akabab/starwars-api/0.2.1/api/all.json";
@@ -43,9 +44,27 @@ public class MainActivity extends AppCompatActivity {
                         for (int j = 0; j < response.length(); j++) {
                             JSONObject profilJSonObjet = (JSONObject) response.getJSONObject(j);
 
-                            ModelProfil profilObjet = new ModelProfil();
+                            int id = profilJSonObjet.getInt("id");
+                            String name = profilJSonObjet.getString("name");
+                            String height = (profilJSonObjet.getString("height")).toString();
+                            int mass = profilJSonObjet.getInt("mass");
+                            String gender = profilJSonObjet.getString("gender");
+                            String homeworld = profilJSonObjet.getString("homeworld");
+                            String wiki = profilJSonObjet.getString("wiki");
+                            String image = profilJSonObjet.getString("image");
 
-                            profilObjet.setId(profilJSonObjet.getInt("id"));
+                            String species = profilJSonObjet.getString("species");
+
+
+                            homeRef.push().setValue(homeworld);
+
+                            ModelProfil profilObjet = new ModelProfil(id, name, height, mass, gender, homeworld,  image, species);
+                            myRef.push().setValue(profilObjet);
+
+
+
+
+                         /*   profilObjet.setId(profilJSonObjet.getInt("id"));
                             profilObjet.setName(profilJSonObjet.getString("name"));
                             profilObjet.setHeight(profilJSonObjet.getLong("height"));
                             profilObjet.setMass(profilJSonObjet.getInt("mass"));
@@ -54,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
                             profilObjet.setWiki(profilJSonObjet.getString("wiki"));
                             profilObjet.setImage(profilJSonObjet.getString("image"));
                             profilObjet.setAge(profilJSonObjet.getInt("age"));
-                            profilObjet.setSpecies(profilJSonObjet.getString("species"));
+                            profilObjet.setSpecies(profilJSonObjet.getString("species"));*/
 
 
 
-                            myRef.push().setValue(profilObjet);
+
 
 
 

@@ -3,7 +3,7 @@ package fr.wcs.starlove;
 public class ModelProfil {
     int id;
     String name;
-    long height;
+    String height;
     int mass;
     String gender;
     String homeworld;
@@ -15,7 +15,7 @@ public class ModelProfil {
     public ModelProfil() {
     }
 
-    public ModelProfil(int id, String name, long height, int mass, String gender, String homeworld, String wiki, String image, int age, String species) {
+    public ModelProfil(int id, String name, String height, int mass, String gender, String homeworld, String wiki, String image, int age, String species) {
         this.id = id;
         this.name = name;
         this.height = height;
@@ -25,6 +25,17 @@ public class ModelProfil {
         this.wiki = wiki;
         this.image = image;
         this.age = age;
+        this.species = species;
+    }
+
+    public ModelProfil(int id, String name, String height, int mass, String gender, String homeworld,  String image, String species) {
+        this.id = id;
+        this.name = name;
+        this.height = height;
+        this.mass = mass;
+        this.gender = gender;
+        this.homeworld = homeworld;
+        this.image = image;
         this.species = species;
     }
 
@@ -44,11 +55,11 @@ public class ModelProfil {
         this.name = name;
     }
 
-    public long getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(long height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
