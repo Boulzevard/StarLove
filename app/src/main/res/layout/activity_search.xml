@@ -16,6 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Find your soul mate !"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,19 +28,21 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="65dp"
         android:text="Species"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tittle_search" />
 
     <Spinner
         android:id="@+id/sp_species"
-        android:layout_width="75dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="1dp"
         android:entries="@array/species"
+        android:prompt="@string/spinners"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_species" />
 
@@ -49,14 +52,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="System"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_species" />
 
     <Spinner
         android:id="@+id/sp_system"
-        android:layout_width="75dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
@@ -66,10 +69,11 @@
 
     <Spinner
         android:id="@+id/sp_gender"
-        android:layout_width="75dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="1dp"
         android:entries="@array/gender"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_gender" />
@@ -80,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="Gender"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_system" />
@@ -89,42 +93,42 @@
         android:id="@+id/tv_hair"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:text="Hair color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tittle_search" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_gender" />
 
     <Spinner
-        android:id="@+id/sp_eye"
-        android:layout_width="75dp"
+        android:id="@+id/sp_hair"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginRight="49dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:entries="@array/hair"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_hair" />
 
     <TextView
         android:id="@+id/tv_eye"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="145dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:text="Eye color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tittle_search" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_hair" />
 
     <Spinner
         android:id="@+id/sp_eye"
-        android:layout_width="75dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:entries="@array/eye"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_eye" />
 
     <TextView
@@ -135,6 +139,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Choose your preferencies"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tittle_search" />
 
@@ -146,10 +151,11 @@
         android:layout_marginLeft="147dp"
         android:layout_marginRight="149dp"
         android:layout_marginStart="147dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="16dp"
         android:text="Find"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_gender" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_eye" />
 
 </android.support.constraint.ConstraintLayout>
