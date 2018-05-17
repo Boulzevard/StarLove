@@ -162,9 +162,12 @@ public class MainActivity extends AppCompatActivity {
                                                 Toast.makeText(MainActivity.this, "Authentication failed." + task.getException(),
                                                         Toast.LENGTH_SHORT).show();
                                             } else {
+                                                mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+                                                String userID = mCurrentUser.getUid();
                                                 String key = mRef.child("Profils").push().getKey();
                                                 mRef.child("Profils").child(key).child("name").setValue(pseudo);
                                                 mRef.child("Profils").child(key).child("id").setValue(id);
+                                                mRef.child("Profils").child(key).child("userid").setValue(userID);
 
                                                 startActivity(new Intent(MainActivity.this, ListeActivity.class));
                                                 finish();
