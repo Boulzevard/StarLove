@@ -89,7 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     LatLng latLng = new LatLng(lat, lng);
                     mMap.addMarker(new MarkerOptions()
                             .position(latLng)
-                            .title("vile").icon(BitmapDescriptorFactory.fromResource(R.drawable.planet_rouge)));                }
+                            .title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.planet_rouge)));                }
             }
 
             @Override
@@ -100,7 +100,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                
                 Intent intent = new Intent(MapsActivity.this, PlanetActivity.class);
+                intent.putExtra("planet", marker.getTitle());
                 startActivity(intent);
 
                 return false;
