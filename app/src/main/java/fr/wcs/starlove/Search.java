@@ -1,5 +1,6 @@
 package fr.wcs.starlove;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +39,14 @@ public class Search extends AppCompatActivity {
                 mGender = spinner_gender.getSelectedItem().toString().toLowerCase();
                 mHair = spinner_hair.getSelectedItem().toString().toLowerCase();
                 mEye = spinner_eye.getSelectedItem().toString().toLowerCase();
+
+                Intent intent = new Intent(Search.this, FilterListActivity.class);
+                intent.putExtra("species", mSpecies);
+                intent.putExtra("system", mSystem);
+                intent.putExtra("gender", mGender);
+                intent.putExtra("hair", mHair);
+                intent.putExtra("eye", mEye);
+                startActivity(intent);
 
             }
         });
