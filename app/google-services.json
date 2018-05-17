@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "208706574006",
+    "firebase_url": "https://starlove-e85f6.firebaseio.com",
+    "project_id": "starlove-e85f6",
+    "storage_bucket": "starlove-e85f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208706574006:android:bb10b378b9268cbd",
+        "android_client_info": {
+          "package_name": "fr.wcs.starlove"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208706574006-139iaqqkfca4bpcoclrc8al5hvramdpr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wcs.starlove",
+            "certificate_hash": "23c5ea9fba4f828924413eca8517485e2d3dc741"
+          }
+        },
+        {
+          "client_id": "208706574006-80fhqeieltrmav946ibrpg2gnt0dqt6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsE0DytiXhdSX9DTJzE0czr3w7RrdECHU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208706574006-80fhqeieltrmav946ibrpg2gnt0dqt6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
