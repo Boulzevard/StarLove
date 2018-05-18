@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
      //  -------------------------- Connection : ----------------------------------------------------------------------
 
         final Button boutonConnection = findViewById(R.id.bt_login);
-
         boutonConnection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
