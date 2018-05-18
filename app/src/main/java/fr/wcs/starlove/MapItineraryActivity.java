@@ -3,6 +3,7 @@ package fr.wcs.starlove;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,6 +13,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,9 +25,14 @@ public class MapItineraryActivity extends FragmentActivity implements OnMapReady
 
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     final DatabaseReference mMyRef = mDatabase.getReference("etoile");
+    final DatabaseReference mMyRefProfil = mDatabase.getReference("Profils");
     final DatabaseReference mMyRefPlanet = mDatabase.getReference("planet");
     String mDestination;
+    String mDepart;
     String mUId;
+    String mName;
+    Marker mMarkerDepart;
+    Marker mMarkerDestination;
     private GoogleMap mMap;
 
     @Override
@@ -36,10 +43,32 @@ public class MapItineraryActivity extends FragmentActivity implements OnMapReady
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        markerReady();
         Intent intent = getIntent();
         mDestination = intent.getStringExtra("destination");
         mUId = intent.getStringExtra("mUId");
+        mName = intent.getStringExtra("name");
+
+        mMyRefProfil.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot profil : dataSnapshot.getChildren()) {
+                    if(profil.child("userid").exists()){
+                        if(profil.child("key").getValue(String.class).equals(mUId)){
+                            mDepart = profil.child("homeworld").getValue(String.class);
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
     }
 
@@ -65,16 +94,14 @@ public class MapItineraryActivity extends FragmentActivity implements OnMapReady
         mMap = googleMap;
 
 
-        float minZoomPreference = 15;
+        float minZoomPreference = 6;
         float maxZoomPreference = 4;
-        //mMap.setMinZoomPreference(minZoomPreference);
+        mMap.setMinZoomPreference(minZoomPreference);
         mMap.setMaxZoomPreference(maxZoomPreference);
 
-        LatLngBounds AUSTRALIA = new LatLngBounds(
-                new LatLng(-44, 113), new LatLng(-10, 154));
 
         // Add a marker in stars and move the camera
-        LatLng stars = new LatLng(65.91342517317852, 97.6865230253797);
+        //LatLng stars = new LatLng(65.91342517317852, 97.6865230253797);
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(stars));
         LatLng one = new LatLng(76.96362432417277, 39.02587325000002);
@@ -98,29 +125,48 @@ public class MapItineraryActivity extends FragmentActivity implements OnMapReady
         //set latlong bounds
         mMap.setLatLngBoundsForCameraTarget(bounds);
 
+        LatLng latLng = new LatLng(64.716928, 108.89892);
+        mMarkerDepart = mMap.addMarker(new MarkerOptions()
+                .position(latLng)
+                .title("terre").icon(BitmapDescriptorFactory.fromResource(R.drawable.planet_rouge)));
+
         //move camera to fill the bound to screen
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(stars, 4));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mMarkerDepart.getPosition(), 10));
+
+
 
 
         //set zoom to level to current so that you won't be able to zoom out viz. move outside bounds
         mMap.setMinZoomPreference(mMap.getCameraPosition().zoom);
+
+
+    }
+    public void markerReady() {
         mMyRefPlanet.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshotLatLng : dataSnapshot.getChildren()) {
                     String title = dataSnapshotLatLng.getKey();
-                    String depart = "";
+
                     Double lng = dataSnapshotLatLng.child("longitude").getValue(Double.class);
                     Double lat = dataSnapshotLatLng.child("latitude").getValue(Double.class);
-                    if(dataSnapshotLatLng.child("userid").exists()){
-                        depart = dataSnapshotLatLng.child("homeworld").getValue(String.class);
-                    }
-                    if (title.equals(mDestination) || title.equals(depart)) {
+
+                    if (title.equals(mDestination)) {
                         LatLng latLng = new LatLng(lat, lng);
-                        mMap.addMarker(new MarkerOptions()
+                        mMarkerDestination = mMap.addMarker(new MarkerOptions()
                                 .position(latLng)
                                 .title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.planet_rouge)));
+
+
+
+                        Double hauteur = Math.abs(mMarkerDepart.getPosition().latitude - mMarkerDestination.getPosition().latitude);
+                        Double longueur = Math.abs(mMarkerDepart.getPosition().longitude - mMarkerDestination.getPosition().longitude);
+
+                        Double diagonal = Math.sqrt(hauteur*hauteur +longueur*longueur) * 2;
+                        int dist = diagonal.intValue();
+                        String distance = String.valueOf(dist);
+                        Toast.makeText(MapItineraryActivity.this,mName + " est à " + distance + " mn en vitesse lumiere,  allez rejoins l'amour de ta vie." , Toast.LENGTH_LONG).show();
                     }
 
 
@@ -150,6 +196,5 @@ public class MapItineraryActivity extends FragmentActivity implements OnMapReady
 
             }
         });
-
     }
 }

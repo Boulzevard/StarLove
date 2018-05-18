@@ -72,6 +72,7 @@ public class Description extends AppCompatActivity {
                 Intent intent1 = new Intent(Description.this, MapItineraryActivity.class);
                 intent1.putExtra("destination", mHomeworld);
                 intent1.putExtra("mUId", mUId);
+                intent1.putExtra("name", mName);
                 startActivity(intent1);
             }
         });
