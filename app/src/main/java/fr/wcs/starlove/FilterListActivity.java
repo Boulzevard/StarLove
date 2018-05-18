@@ -1,7 +1,12 @@
 package fr.wcs.starlove;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,11 +38,20 @@ public class FilterListActivity extends AppCompatActivity {
         final String species = getIntent().getStringExtra("species");
         final String gender = getIntent().getStringExtra("gender");
         final String system = getIntent().getStringExtra("system");
-        final String hair = getIntent().getStringExtra("hair");
-        final String eye = getIntent().getStringExtra("eye");
+        final String hair = getIntent().getStringExtra("hair").toLowerCase();
+        final String eye = getIntent().getStringExtra("eye").toLowerCase();
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = mDatabase.getReference("Profils");
+
+        Button button = findViewById(R.id.button_map_filter);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FilterListActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mListView = findViewById(R.id.lv_filter_list);
         mArrayList = new ArrayList<>();
@@ -54,17 +68,17 @@ public class FilterListActivity extends AppCompatActivity {
                 for(DataSnapshot ds: dataSnapshot.getChildren()) {
 
                     if (ds.hasChild("species") && ds.hasChild("gender") && ds.hasChild("homeworld")
-                            /*&& ds.hasChild("hairColor") && ds.hasChild("eyeColor")*/) {
+                        /*    && ds.hasChild("hairColor") && ds.hasChild("eyeColor")*/) {
 
 
                         mSpecies = ds.child("species").getValue().toString();
                         mGender = ds.child("gender").getValue().toString();
                         mSystem = ds.child("homeworld").getValue().toString();
-//                        mHair = ds.child("hairColor").getValue().toString();
-//                        mEye = ds.child("eyeColor").getValue().toString();
+                        mHair = ds.child("hairColor").getValue().toString();
+                        mEye = ds.child("eyeColor").getValue().toString();
 
-                            if (mSpecies.contains(species) && mGender.contains(gender) && mSystem.contains(system)
-                                 /*&& mHair.contains(hair) && mEye.contains(eye)*/) {
+                            if (mSpecies.contains(species) && mGender.equals(gender) && mSystem.contains(system)
+                                /* && mHair.contains(hair) && mEye.contains(eye)*/) {
                                 mModel = ds.getValue(ModelProfil.class);
                                 mAdapter.add(mModel);
 
@@ -81,7 +95,25 @@ public class FilterListActivity extends AppCompatActivity {
             }
         });
 
-//                    String currentHair = ds.child("hairColor").getValue().toString();
-        //                  String currentEye = ds.child("eyeColor").getValue().toString();
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int j, long id) {
+                Parcelable profil = new ModelProfil(mArrayList.get(j).getName(), mArrayList.get(j).getGender(), mArrayList.get(j).getHomeworld(),
+                        mArrayList.get(j).getImage(), mArrayList.get(j).getSpecies());
+                Intent intent = new Intent(FilterListActivity.this, Description.class);
+                intent.putExtra("profil", profil);
+                startActivity(intent);
+            }
+        });
+
+        Button toSearch = findViewById(R.id.bt_preferences_filter);
+        toSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FilterListActivity.this, Search.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
