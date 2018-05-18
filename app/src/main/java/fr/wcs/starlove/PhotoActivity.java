@@ -88,7 +88,7 @@ public class PhotoActivity extends AppCompatActivity {
         builderSingle.setTitle(R.string.choisissez);
 
         final String [] items = new String[] {"Gallerie", "Appareil photo"};
-        final Integer[] icons = new Integer[] {R.drawable.icongallery, R.drawable.iconphoto};
+        final Integer[] icons = new Integer[] {R.drawable.icongallery2, R.drawable.iconphoto2};
         ListAdapter adapter = new ArrayAdapterWithIcon(PhotoActivity.this, items, icons);
 
         builderSingle.setNegativeButton(
