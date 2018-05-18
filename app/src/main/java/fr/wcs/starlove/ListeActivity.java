@@ -1,9 +1,11 @@
 package fr.wcs.starlove;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -83,6 +85,17 @@ public class ListeActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int j, long id) {
+                Parcelable profil = new ModelProfil(mArrayList.get(j).getName(), mArrayList.get(j).getGender(), mArrayList.get(j).getHomeworld(),
+                        mArrayList.get(j).getImage(), mArrayList.get(j).getSpecies());
+                Intent intent = new Intent(ListeActivity.this, Description.class);
+                intent.putExtra("profil", profil);
+                startActivity(intent);
             }
         });
 
