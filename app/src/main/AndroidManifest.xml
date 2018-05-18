@@ -51,6 +51,12 @@
         <activity
             android:name=".Description"
             android:theme="@style/DialogActivity" />
+        <activity
+            android:name=".MapItineraryActivity"
+            android:label="@string/title_activity_map_itinerary"></activity>
+        <activity
+            android:name=".Description"
+            android:theme="@style/DialogActivity" />
         <activity android:name=".PhotoActivity"></activity>
     </application>
 

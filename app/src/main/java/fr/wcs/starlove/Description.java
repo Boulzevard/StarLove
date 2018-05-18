@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Random;
 
 public class Description extends AppCompatActivity {
 
@@ -27,6 +30,8 @@ public class Description extends AppCompatActivity {
     String mHomeworld;
     String mImage;
     String mSpecies;
+    String mUId;
+    Random mRandom = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class Description extends AppCompatActivity {
         Intent intent = getIntent();
 
         ModelProfil profil = intent.getParcelableExtra("profil");
+        mUId = intent.getStringExtra("mUid");
 
         mName = profil.getName();
         mGender = profil.getGender();
@@ -52,13 +58,26 @@ public class Description extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot descrip : dataSnapshot.getChildren())
-                mIntro = dataSnapshot.child("2").getValue(String.class);
-                description.setText(mIntro + " " +mName + " " + mGender + " " + mHomeworld + " " + mSpecies +" .");
+                    //int i2 = mRandom.nextInt(4);
+                mIntro = dataSnapshot.child("1").getValue(String.class);
+                description.setText(mIntro + "je  " +mName + " " + mGender + " " + mHomeworld + " " + mSpecies +" .");
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        ImageView itineraire = findViewById(R.id.image_itinarary);
+        itineraire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Description.this, MapItineraryActivity.class);
+                intent1.putExtra("destination", mHomeworld);
+                intent1.putExtra("mUId", mUId);
+                intent1.putExtra("name", mName);
+                startActivity(intent1);
             }
         });
 

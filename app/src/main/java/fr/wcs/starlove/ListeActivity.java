@@ -96,6 +96,7 @@ public class ListeActivity extends AppCompatActivity {
                         mArrayList.get(j).getImage(), mArrayList.get(j).getSpecies());
                 Intent intent = new Intent(ListeActivity.this, Description.class);
                 intent.putExtra("profil", profil);
+                intent.putExtra("mUid", mUserID);
                 startActivity(intent);
             }
         });
