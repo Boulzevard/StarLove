@@ -137,4 +137,7 @@
 
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_map_itinerary">Map</string>
+    <string name="annuler">annuler</string>
+    <string name="fail">fail</string>
+    <string name="choisissez">Choose</string>
 </resources>

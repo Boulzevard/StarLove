@@ -8,6 +8,10 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -50,6 +54,10 @@
         <activity
             android:name=".MapItineraryActivity"
             android:label="@string/title_activity_map_itinerary"></activity>
+        <activity
+            android:name=".Description"
+            android:theme="@style/DialogActivity" />
+        <activity android:name=".PhotoActivity"></activity>
     </application>
 
 </manifest>
