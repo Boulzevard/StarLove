@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backcoeur"
+    android:background="@drawable/backmain"
     tools:context=".MainActivity">
 
     <TextView
@@ -151,7 +151,10 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Créer compte"
+        android:text="Continue"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:background="@drawable/heart3_pinked"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
