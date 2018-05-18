@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Search"
-    android:background="@drawable/backstardeath">
+    android:background="@drawable/backstardeath3">
 
     <TextView
         android:id="@+id/tv_tittle_search"
@@ -153,14 +153,18 @@
 
     <Button
         android:id="@+id/bt_find"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="168dp"
+        android:layout_height="155dp"
         android:layout_marginEnd="149dp"
         android:layout_marginLeft="147dp"
         android:layout_marginRight="149dp"
         android:layout_marginStart="147dp"
         android:layout_marginTop="16dp"
         android:text="Find"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@drawable/heart3_pinked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -168,14 +172,18 @@
 
     <Button
         android:id="@+id/bt_ajout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="168dp"
+        android:layout_height="155dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Validation"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@drawable/heart3_pinked"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
