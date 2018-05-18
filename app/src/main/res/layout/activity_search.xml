@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Search">
+    tools:context=".Search"
+    android:background="@drawable/backstardeath">
 
     <TextView
         android:id="@+id/tv_tittle_search"
@@ -16,6 +17,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Find your soul mate !"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -30,6 +32,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="24dp"
         android:text="Species"
+        android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -53,6 +56,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
+        android:textColor="#000000"
         android:text="System"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_species" />
@@ -85,6 +89,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
+        android:textColor="#000000"
         android:text="Gender"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_system" />
@@ -97,6 +102,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:text="Hair color"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_gender" />
 
@@ -118,6 +124,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
         android:text="Eye color"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_hair" />
 
@@ -140,6 +147,7 @@
         android:layout_marginTop="20dp"
         android:text="Choose your preferencies"
         android:textSize="18sp"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tittle_search" />
 

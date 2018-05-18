@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3"
+    android:background="@drawable/backcoeur"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,6 +17,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Login"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +32,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Email"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pseudo" />
@@ -68,6 +72,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Password"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_email" />
@@ -115,6 +121,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Pseudo"
+        android:textStyle="bold"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
