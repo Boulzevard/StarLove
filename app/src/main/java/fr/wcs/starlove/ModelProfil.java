@@ -1,6 +1,9 @@
 package fr.wcs.starlove;
 
-public class ModelProfil {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ModelProfil implements Parcelable {
     int id;
     String name;
     Double height;
@@ -12,7 +15,7 @@ public class ModelProfil {
     int age;
     String species;
 
-    public ModelProfil() {
+    public ModelProfil()  {
     }
 
     public ModelProfil(int id, String name, Double height, int mass, String gender, String homeworld, String wiki, String image, int age, String species) {
@@ -27,6 +30,67 @@ public class ModelProfil {
         this.age = age;
         this.species = species;
     }
+
+    public ModelProfil(String name, String gender, String homeworld, String image, String species) {
+        this.name = name;
+        this.gender = gender;
+        this.homeworld = homeworld;
+        this.image = image;
+        this.species = species;
+    }
+
+    protected ModelProfil(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        if (in.readByte() == 0) {
+            height = null;
+        } else {
+            height = in.readDouble();
+        }
+        mass = in.readInt();
+        gender = in.readString();
+        homeworld = in.readString();
+        wiki = in.readString();
+        image = in.readString();
+        age = in.readInt();
+        species = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        if (height == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(height);
+        }
+        dest.writeInt(mass);
+        dest.writeString(gender);
+        dest.writeString(homeworld);
+        dest.writeString(wiki);
+        dest.writeString(image);
+        dest.writeInt(age);
+        dest.writeString(species);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ModelProfil> CREATOR = new Creator<ModelProfil>() {
+        @Override
+        public ModelProfil createFromParcel(Parcel in) {
+            return new ModelProfil(in);
+        }
+
+        @Override
+        public ModelProfil[] newArray(int size) {
+            return new ModelProfil[size];
+        }
+    };
 
     public int getId() {
         return id;
