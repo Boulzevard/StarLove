@@ -4,6 +4,7 @@
 
     <string-array name="system">
         <item>Please select…</item>
+        <item>Terre</item>
         <item>Tatooine</item>
         <item>Alderaan</item>Eriadu
         <item>Kashyyyk</item>

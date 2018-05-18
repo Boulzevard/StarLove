@@ -31,8 +31,8 @@ public class ListeActivity extends AppCompatActivity {
     FirebaseUser mUser;
     DatabaseReference myRef;
 
-    private String mUserID;
-    private String mUserKey;
+    private String mUserID, currentID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +52,7 @@ public class ListeActivity extends AppCompatActivity {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         mUserID = mUser.getUid();
         myRef = mDatabase.getReference("Profils");
-       // mUserKey = getIntent().getStringExtra("key");
-        mUserKey = "-LCjK-8J_wu8OjdIB1QT";
-
+        currentID = "";
 
 
         mListView = findViewById(R.id.listviewprincipal);
@@ -69,8 +67,11 @@ public class ListeActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mAdapter.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    String currentKey = ds.child("key").getValue().toString();
-                    if (!currentKey.equals(mUserKey)){
+                    if(ds.child("userid").exists()){
+                        currentID = ds.child("userid").getValue().toString();
+                    }
+
+                    if (!currentID.equals(mUserID)){
                             mModel = ds.getValue(ModelProfil.class);
                             mAdapter.add(mModel);
 

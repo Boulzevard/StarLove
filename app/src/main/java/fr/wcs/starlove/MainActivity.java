@@ -62,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
      //  -------------------------- Connection : ----------------------------------------------------------------------
 
         final Button boutonConnection = findViewById(R.id.bt_login);
-
         boutonConnection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,8 +173,9 @@ public class MainActivity extends AppCompatActivity {
                                                 mRef.child("Profils").child(key).child("userid").setValue(userID);
                                                 mRef.child("Profils").child(key).child("key").setValue(key);
 
-                                                Intent intent = new Intent(MainActivity.this, ListeActivity.class);
+                                                Intent intent = new Intent(MainActivity.this, Search.class);
                                                 intent.putExtra("userKey", key);
+                                                intent.putExtra("status", "2");
                                                 startActivity(intent);
 
                                                 finish();
@@ -188,11 +190,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
-
-
-
-
 
     }
 }
