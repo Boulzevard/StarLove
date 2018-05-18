@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -74,6 +75,10 @@ public class Search extends AppCompatActivity {
 
             toFilteredList.setVisibility(View.GONE);
             ajoutCompte.setVisibility(View.VISIBLE);
+            TextView title = findViewById(R.id.tv_tittle_search);
+            title.setText("How are you ?");
+            TextView info = findViewById(R.id.textView4);
+            info.setText("Please fill all cases");
             ajoutCompte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
