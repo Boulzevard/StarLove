@@ -60,7 +60,7 @@ public class Description extends AppCompatActivity {
                 for(DataSnapshot descrip : dataSnapshot.getChildren())
                     //int i2 = mRandom.nextInt(4);
                 mIntro = dataSnapshot.child("1").getValue(String.class);
-                description.setText(mIntro + "je  " +mName + " " + mGender + " " + mHomeworld + " " + mSpecies +" .");
+                description.setText(mIntro + "je suis  " +mName + " , magnifique " + mGender + " de " + mHomeworld + " , je suis " + mSpecies +" .");
             }
 
             @Override

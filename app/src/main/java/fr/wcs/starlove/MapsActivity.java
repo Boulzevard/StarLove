@@ -115,7 +115,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     LatLng latLng = new LatLng(lat, lng);
                     mMap.addMarker(new MarkerOptions()
                             .position(latLng)
-                            .title("vile").icon(BitmapDescriptorFactory.fromResource(R.drawable.point_etoile)));                }
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.point_etoile)));                }
             }
 
             @Override
