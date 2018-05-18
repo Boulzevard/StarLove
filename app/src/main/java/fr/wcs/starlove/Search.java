@@ -100,9 +100,9 @@ public class Search extends AppCompatActivity {
                     myRef.child(userKey).child("hairColor").setValue(mHair);
                     myRef.child(userKey).child("eyeColor").setValue(mEye);
 
-                    startActivity(new Intent(Search.this, ListeActivity.class));
-
-
+                    Intent intent = new Intent(Search.this, PhotoActivity.class);
+                    intent.putExtra("userKey", userKey);
+                    startActivity(intent);
 
                 }
             });
