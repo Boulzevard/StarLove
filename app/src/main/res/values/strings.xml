@@ -4,39 +4,104 @@
 
     <string-array name="system">
         <item>Please select…</item>
-        <item>Tatooine</item><item>Alderaan</item>Eriadu<item>Kashyyyk</item><item>Corellia</item>
-        <item>Naboo</item><item>Stewjon</item><item>Rodia</item><item>Bestine</item>
-        <item>Kamino</item><item>Trandosha</item><item>Socorro</item><item>Bespine</item>
-        <item>Mon Cala</item><item>Chandrila</item><item>Endor</item><item>Sullust</item>
-        <item>Coruscant</item><item>Neimoidia</item><item>Toydaria</item><item>Malastare</item>
-        <item>Dathomir</item><item>Ryloth</item><item>Aleen</item><item>Vulpter</item>
-        <item>Troiken</item><item>Haruun kal</item><item>Cerea</item><item>Glee anselm</item>
-        <item>Tund</item><item>Nar Shaddaa</item><item>Iktotch</item><item>Champala</item>
-        <item>Quermia</item><item>Dorin</item><item>Geonosis</item><item>Mirial</item>
-        <item>Serenno</item><item>Concord Dawn</item><item>Zolan</item><item>Ojom</item>
-        <item>Skako</item><item>Scipio</item><item>Shili</item><item>Kalee</item>
-        <item>Umbara</item><item>Utapau</item><item>Jakku</item><item>Yavin 4</item>
+        <item>Tatooine</item>
+        <item>Alderaan</item>Eriadu
+        <item>Kashyyyk</item>
+        <item>Corellia</item>
+        <item>Naboo</item>
+        <item>Stewjon</item>
+        <item>Rodia</item>
+        <item>Bestine</item>
+        <item>Kamino</item>
+        <item>Trandosha</item>
+        <item>Socorro</item>
+        <item>Bespine</item>
+        <item>Mon Cala</item>
+        <item>Chandrila</item>
+        <item>Endor</item>
+        <item>Sullust</item>
+        <item>Coruscant</item>
+        <item>Neimoidia</item>
+        <item>Toydaria</item>
+        <item>Malastare</item>
+        <item>Dathomir</item>
+        <item>Ryloth</item>
+        <item>Aleen</item>
+        <item>Vulpter</item>
+        <item>Troiken</item>
+        <item>Haruun kal</item>
+        <item>Cerea</item>
+        <item>Glee anselm</item>
+        <item>Tund</item>
+        <item>Nar Shaddaa</item>
+        <item>Iktotch</item>
+        <item>Champala</item>
+        <item>Quermia</item>
+        <item>Dorin</item>
+        <item>Geonosis</item>
+        <item>Mirial</item>
+        <item>Serenno</item>
+        <item>Concord Dawn</item>
+        <item>Zolan</item>
+        <item>Ojom</item>
+        <item>Skako</item>
+        <item>Scipio</item>
+        <item>Shili</item>
+        <item>Kalee</item>
+        <item>Umbara</item>
+        <item>Utapau</item>
+        <item>Jakku</item>
+        <item>Yavin 4</item>
         <item>Parnassos</item>
     </string-array>
 
     <string-array name="species">
         <item>Please select…</item>
-        <item>Human</item><item>Droid</item><item>Wookiee</item><item>Rodian</item><item>Hutt</item>
-        <item>Trandoshan</item><item>Mon Calamari</item><item>Ewok</item><item>Sullustan</item>
-        <item>Neimoidian</item><item>Gungan</item><item>Toydarian</item><item>Dug</item>
-        <item>Dathomirian Zabrak</item><item>Twi'lek</item><item>Aleena</item><item>Vulptereen</item>
-        <item>Xexto</item><item>Toong</item><item>Cerean</item><item>Nautolan</item>
-        <item>Iridonian Zabrak</item><item>Tholothian</item><item>Iktotchi</item><item>Quermian</item>
-        <item>Kel Dor</item><item>Chagrian</item><item>Geonosian</item><item>Mirialan</item>
-        <item>Clawdite</item><item>Besalisk</item><item>Kaminoan</item><item>Skakoan</item>
-        <item>Muun</item><item>Togruta</item><item>Kaleesh</item><item>Umbaran</item>
+        <item>Human</item>
+        <item>Droid</item>
+        <item>Wookiee</item>
+        <item>Rodian</item>
+        <item>Hutt</item>
+        <item>Trandoshan</item>
+        <item>Mon Calamari</item>
+        <item>Ewok</item>
+        <item>Sullustan</item>
+        <item>Neimoidian</item>
+        <item>Gungan</item>
+        <item>Toydarian</item>
+        <item>Dug</item>
+        <item>Dathomirian Zabrak</item>
+        <item>Twi'lek</item>
+        <item>Aleena</item>
+        <item>Vulptereen</item>
+        <item>Xexto</item>
+        <item>Toong</item>
+        <item>Cerean</item>
+        <item>Nautolan</item>
+        <item>Iridonian Zabrak</item>
+        <item>Tholothian</item>
+        <item>Iktotchi</item>
+        <item>Quermian</item>
+        <item>Kel Dor</item>
+        <item>Chagrian</item>
+        <item>Geonosian</item>
+        <item>Mirialan</item>
+        <item>Clawdite</item>
+        <item>Besalisk</item>
+        <item>Kaminoan</item>
+        <item>Skakoan</item>
+        <item>Muun</item>
+        <item>Togruta</item>
+        <item>Kaleesh</item>
+        <item>Umbaran</item>
         <item>Pau'an</item>
     </string-array>
 
 
     <string-array name="gender">
         <item>Please select…</item>
-        <item>Female</item><item>Male</item>
+        <item>Female</item>
+        <item>Male</item>
     </string-array>
 
     <string-array name="hair">
@@ -52,34 +117,22 @@
 
     <string-array name="eye">
         <item>Please select…</item>
-        <item>blue</item><item>red</item>
-        <item>brown</item><item>black</item>
-        <item>gold</item><item>gray</item>
-        <item>green</item><item>hazel</item>
-        <item>light</item><item>orange</item>
-        <item>pink</item><item>purple</item>
-        <item>white</item><item>yellow</item>
+        <item>blue</item>
+        <item>red</item>
+        <item>brown</item>
+        <item>black</item>
+        <item>gold</item>
+        <item>gray</item>
+        <item>green</item>
+        <item>hazel</item>
+        <item>light</item>
+        <item>orange</item>
+        <item>pink</item>
+        <item>purple</item>
+        <item>white</item>
+        <item>yellow</item>
     </string-array>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="title_activity_maps">Map</string>
 </resources>
