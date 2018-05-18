@@ -38,8 +38,8 @@ public class FilterListActivity extends AppCompatActivity {
         final String species = getIntent().getStringExtra("species");
         final String gender = getIntent().getStringExtra("gender");
         final String system = getIntent().getStringExtra("system");
-        final String hair = getIntent().getStringExtra("hair");
-        final String eye = getIntent().getStringExtra("eye");
+        final String hair = getIntent().getStringExtra("hair").toLowerCase();
+        final String eye = getIntent().getStringExtra("eye").toLowerCase();
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = mDatabase.getReference("Profils");
@@ -77,7 +77,7 @@ public class FilterListActivity extends AppCompatActivity {
                         mHair = ds.child("hairColor").getValue().toString();
                         mEye = ds.child("eyeColor").getValue().toString();
 
-                            if (mSpecies.contains(species) && mGender.contains(gender) && mSystem.contains(system)
+                            if (mSpecies.contains(species) && mGender.equals(gender) && mSystem.contains(system)
                                 /* && mHair.contains(hair) && mEye.contains(eye)*/) {
                                 mModel = ds.getValue(ModelProfil.class);
                                 mAdapter.add(mModel);
