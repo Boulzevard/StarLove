@@ -1,8 +1,9 @@
 package fr.wcs.starlove;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,22 +21,53 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-    private GoogleMap mMap;
+public class MapItineraryActivity extends FragmentActivity implements OnMapReadyCallback {
 
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     final DatabaseReference mMyRef = mDatabase.getReference("etoile");
+    final DatabaseReference mMyRefProfil = mDatabase.getReference("Profils");
     final DatabaseReference mMyRefPlanet = mDatabase.getReference("planet");
+    String mDestination;
+    String mDepart;
+    String mUId;
+    String mName;
+    Marker mMarkerDepart;
+    Marker mMarkerDestination;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_map_itinerary);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        markerReady();
+        Intent intent = getIntent();
+        mDestination = intent.getStringExtra("destination");
+        mUId = intent.getStringExtra("mUId");
+        mName = intent.getStringExtra("name");
+
+        mMyRefProfil.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot profil : dataSnapshot.getChildren()) {
+                    if(profil.child("userid").exists()){
+                        if(profil.child("key").getValue(String.class).equals(mUId)){
+                            mDepart = profil.child("homeworld").getValue(String.class);
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
 
     }
@@ -52,23 +84,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
 
         //Style de la map, fichier json créé depuis mapstyle
-        MapStyleOptions mapFilter = MapStyleOptions.loadRawResourceStyle(MapsActivity.this, R.raw.map_style);
+        MapStyleOptions mapFilter = MapStyleOptions.loadRawResourceStyle(MapItineraryActivity.this, R.raw.map_style);
         googleMap.setMapStyle(mapFilter);
         mMap = googleMap;
 
 
-        float minZoomPreference = 15;
+        float minZoomPreference = 6;
         float maxZoomPreference = 4;
-        //mMap.setMinZoomPreference(minZoomPreference);
+        mMap.setMinZoomPreference(minZoomPreference);
         mMap.setMaxZoomPreference(maxZoomPreference);
 
-        LatLngBounds AUSTRALIA = new LatLngBounds(
-            new LatLng(-44, 113), new LatLng(-10, 154));
 
         // Add a marker in stars and move the camera
-        LatLng stars = new LatLng(65.91342517317852, 97.6865230253797);
+        //LatLng stars = new LatLng(65.91342517317852, 97.6865230253797);
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(stars));
         LatLng one = new LatLng(76.96362432417277, 39.02587325000002);
@@ -91,14 +124,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //set latlong bounds
         mMap.setLatLngBoundsForCameraTarget(bounds);
+
         LatLng latLng = new LatLng(64.716928, 108.89892);
-        Marker marker = mMap.addMarker(new MarkerOptions()
+        mMarkerDepart = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title("terre").icon(BitmapDescriptorFactory.fromResource(R.drawable.terre60)));
 
         //move camera to fill the bound to screen
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 4));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mMarkerDepart.getPosition(), 10));
+
 
 
 
@@ -106,34 +141,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMinZoomPreference(mMap.getCameraPosition().zoom);
 
 
-        mMyRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshotLatLng : dataSnapshot.getChildren()){
-                    Double lng = dataSnapshotLatLng.child("longitude").getValue(Double.class);
-                    Double lat = dataSnapshotLatLng.child("latitude").getValue(Double.class);
-                    LatLng latLng = new LatLng(lat, lng);
-                    mMap.addMarker(new MarkerOptions()
-                            .position(latLng)
-                            .title("vile").icon(BitmapDescriptorFactory.fromResource(R.drawable.point_etoile)));                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    }
+    public void markerReady() {
         mMyRefPlanet.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshotLatLng : dataSnapshot.getChildren()){
+                for (DataSnapshot dataSnapshotLatLng : dataSnapshot.getChildren()) {
                     String title = dataSnapshotLatLng.getKey();
+
                     Double lng = dataSnapshotLatLng.child("longitude").getValue(Double.class);
                     Double lat = dataSnapshotLatLng.child("latitude").getValue(Double.class);
-                    LatLng latLng = new LatLng(lat, lng);
-                    mMap.addMarker(new MarkerOptions()
-                            .position(latLng)
-                            .title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.planet_rouge)));                }
+
+                    if (title.equals(mDestination)) {
+                        LatLng latLng = new LatLng(lat, lng);
+                        mMarkerDestination = mMap.addMarker(new MarkerOptions()
+                                .position(latLng)
+                                .title(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.planet_rouge)));
+
+
+
+                        Double hauteur = Math.abs(mMarkerDepart.getPosition().latitude - mMarkerDestination.getPosition().latitude);
+                        Double longueur = Math.abs(mMarkerDepart.getPosition().longitude - mMarkerDestination.getPosition().longitude);
+
+                        Double diagonal = Math.sqrt(hauteur*hauteur +longueur*longueur) * 2;
+                        int dist = diagonal.intValue();
+                        String distance = String.valueOf(dist);
+                        Toast.makeText(MapItineraryActivity.this,mName + " est à " + distance + " mn en vitesse lumiere,  allez rejoins l'amour de ta vie." , Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
             }
 
             @Override
@@ -141,17 +178,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        mMyRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public boolean onMarkerClick(Marker marker) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshotLatLng : dataSnapshot.getChildren()) {
+                    Double lng = dataSnapshotLatLng.child("longitude").getValue(Double.class);
+                    Double lat = dataSnapshotLatLng.child("latitude").getValue(Double.class);
+                    LatLng latLng = new LatLng(lat, lng);
+                    mMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .title("vile").icon(BitmapDescriptorFactory.fromResource(R.drawable.point_etoile)));
+                }
+            }
 
-                Intent intent = new Intent(MapsActivity.this, PlanetActivity.class);
-                intent.putExtra("planet", marker.getTitle());
-                startActivity(intent);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                return false;
             }
         });
-
     }
 }
