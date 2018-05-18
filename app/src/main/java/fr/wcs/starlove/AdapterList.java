@@ -44,7 +44,13 @@ public class AdapterList extends ArrayAdapter<ModelProfil> {
 
             if (profil.getAge() != 0) {
                 TextView tvAge = (TextView) convertView.findViewById(R.id.tv_age);
-                float age = -profil.getAge();
+                float age = 0;
+                if (profil.getAge() < 0){
+                    age = -profil.getAge();
+                }
+                else {
+                    age = profil.getAge();
+                }
                 tvAge.setText(age + "");
             }
 
