@@ -24,6 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        style="@style/textlist"
         app:layout_constraintStart_toEndOf="@+id/image_profil"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +36,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        style="@style/textlist"
         app:layout_constraintStart_toEndOf="@+id/image_profil"
         app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
@@ -46,6 +48,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        style="@style/textlist"
         app:layout_constraintStart_toEndOf="@+id/image_profil"
         app:layout_constraintTop_toBottomOf="@+id/text_gender" />
 
@@ -57,6 +60,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        style="@style/textlist"
         app:layout_constraintStart_toEndOf="@+id/image_profil"
         app:layout_constraintTop_toBottomOf="@+id/text_height" />
 </android.support.constraint.ConstraintLayout>
