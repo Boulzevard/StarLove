@@ -37,7 +37,10 @@ public class Search extends AppCompatActivity {
         // test état :
         status = 1;
         String etat = getIntent().getStringExtra("status");
-        if (etat.equals("2")){
+        if (etat == null){
+            status = 1;
+        }
+        else if (etat.equals("2")){
             status = Integer.valueOf(etat);
         }
 

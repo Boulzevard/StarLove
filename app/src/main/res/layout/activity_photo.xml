@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PhotoActivity">
+    tools:context=".PhotoActivity"
+    android:background="@drawable/backcoeur2">
 
     <ImageView
         android:id="@+id/iv_photo_photo"
@@ -18,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_photo"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/vadorcute2" />
 
     <TextView
         android:id="@+id/tv_photo"
@@ -30,6 +31,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:text="Choose your profil picture"
+        style="@style/textlist"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
