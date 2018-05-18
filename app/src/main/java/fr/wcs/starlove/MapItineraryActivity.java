@@ -128,7 +128,7 @@ public class MapItineraryActivity extends FragmentActivity implements OnMapReady
         LatLng latLng = new LatLng(64.716928, 108.89892);
         mMarkerDepart = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
-                .title("terre").icon(BitmapDescriptorFactory.fromResource(R.drawable.planet_rouge)));
+                .title("terre").icon(BitmapDescriptorFactory.fromResource(R.drawable.terre60)));
 
         //move camera to fill the bound to screen
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));

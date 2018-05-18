@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Random;
+
 public class Description extends AppCompatActivity {
 
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
@@ -29,6 +31,7 @@ public class Description extends AppCompatActivity {
     String mImage;
     String mSpecies;
     String mUId;
+    Random mRandom = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,9 @@ public class Description extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot descrip : dataSnapshot.getChildren())
-                mIntro = dataSnapshot.child("2").getValue(String.class);
-                description.setText(mIntro + " " +mName + " " + mGender + " " + mHomeworld + " " + mSpecies +" .");
+                    //int i2 = mRandom.nextInt(4);
+                mIntro = dataSnapshot.child("1").getValue(String.class);
+                description.setText(mIntro + "je  " +mName + " " + mGender + " " + mHomeworld + " " + mSpecies +" .");
             }
 
             @Override
