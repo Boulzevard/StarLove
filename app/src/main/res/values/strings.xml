@@ -4,6 +4,7 @@
 
     <string-array name="system">
         <item>Please select…</item>
+        <item>Terre</item>
         <item>Tatooine</item>
         <item>Alderaan</item>Eriadu
         <item>Kashyyyk</item>
@@ -135,4 +136,7 @@
 
 
     <string name="title_activity_maps">Map</string>
+    <string name="annuler">annuler</string>
+    <string name="fail">fail</string>
+    <string name="choisissez">Choose</string>
 </resources>
